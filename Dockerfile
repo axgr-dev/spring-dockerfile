@@ -14,9 +14,9 @@ RUN gradle --no-daemon bootJar -x test && \
     java -Djarmode=layertools -jar build/libs/*.jar extract --destination /layers && \
     rm -rf /builder/.gradle
 
-FROM eclipse-temurin:17-jre-ubi9-minimal
+FROM eclipse-temurin:17-jre-alpine
 
-RUN groupadd spring && useradd -g spring spring
+RUN addgroup -S spring && adduser -S spring -G spring
 
 USER spring:spring
 
