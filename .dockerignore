@@ -1,0 +1,14 @@
+.gradle
+.idea
+build
+gradle
+
+.dockerignore
+.editorconfig
+.gitignore
+
+commands.sh
+Dockerfile
+HELP.md
+gradlew
+gradlew.bat
