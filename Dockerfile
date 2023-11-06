@@ -5,11 +5,11 @@ WORKDIR /builder
 COPY settings.gradle.kts .
 COPY build.gradle.kts .
 
-RUN gradle --no-daemon dependencies
+RUN gradle --no-daemon --console=plain dependencies --configuration runtimeClasspath
 
 COPY src src
 
-RUN gradle --no-daemon bootJar -x test && \
+RUN gradle --no-daemon --console=plain bootJar -x test && \
     mkdir /layers && \
     java -Djarmode=layertools -jar build/libs/*.jar extract --destination /layers && \
     rm -rf /builder/.gradle
